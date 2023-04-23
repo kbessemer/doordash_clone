@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../menu/view/menu.dart';
+
 class NewRestaurantsView extends StatefulWidget {
   const NewRestaurantsView({Key? key}) : super(key: key);
 
@@ -81,72 +83,82 @@ class _NewRestaurantsViewState extends State<NewRestaurantsView> {
       temp.add(
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Container(
-                width: 250,
-                height: 250,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
-                      child: Image.asset(
-                        restaurant["image"],
-                        width: 250,
-                        height: 125,
-                        fit: BoxFit.cover,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => MenuView()
+                    )
+                );
+              },
+              child: Container(
+                  width: 250,
+                  height: 250,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(8.0),
+                        child: Image.asset(
+                          restaurant["image"],
+                          width: 250,
+                          height: 125,
+                          fit: BoxFit.cover,
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 5),
-                      child: Row(
-                        children: [
-                          Icon(Icons.fastfood_rounded, size: 15, color: Color(0xFF28727b)),
-                          SizedBox(width: 5),
-                          Text(restaurant["title"],
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                              )),
-                        ],
+                      Padding(
+                        padding: const EdgeInsets.only(top: 5),
+                        child: Row(
+                          children: [
+                            Icon(Icons.fastfood_rounded, size: 15, color: Color(0xFF28727b)),
+                            SizedBox(width: 5),
+                            Text(restaurant["title"],
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                )),
+                          ],
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 5),
-                      child: Row(
-                        children: [
-                          Text(restaurant["distance"] + " - " + restaurant["time"] + " - " + restaurant["fee"],
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: Colors.grey,
-                                fontWeight: FontWeight.bold,
-                              )),
-                        ],
+                      Padding(
+                        padding: const EdgeInsets.only(top: 5),
+                        child: Row(
+                          children: [
+                            Text(restaurant["distance"] + " - " + restaurant["time"] + " - " + restaurant["fee"],
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.bold,
+                                )),
+                          ],
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 5),
-                      child: Row(
-                        children: [
-                          Text(restaurant["rating"],
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                              )),
-                          Icon(Icons.star_rounded, color: Colors.yellow, size: 15),
-                          Text("("+restaurant["ratings"]+")",
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: Colors.grey,
-                                fontWeight: FontWeight.bold,
-                              )),
-                        ],
+                      Padding(
+                        padding: const EdgeInsets.only(top: 5),
+                        child: Row(
+                          children: [
+                            Text(restaurant["rating"],
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                )),
+                            Icon(Icons.star_rounded, color: Colors.yellow, size: 15),
+                            Text("("+restaurant["ratings"]+")",
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.bold,
+                                )),
+                          ],
+                        ),
                       ),
-                    ),
-                ],
-                )
+                  ],
+                  )
+              ),
             ),
           ));
     }
